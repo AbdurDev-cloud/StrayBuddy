@@ -1,3 +1,28 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind components; 
+@tailwind utilities; 
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.hover-shimmer {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.hover-shimmer:hover {
+  background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 1.5s infinite linear;
+}
