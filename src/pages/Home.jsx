@@ -5,6 +5,40 @@ import { Link } from 'react-router-dom';
 import how1 from '../assets/how1.jpg';
 import how2 from '../assets/how2.png';
 import how3 from '../assets/how3.jpg';
+import reportingImg from '../assets/reporting.png';
+import volunteeringImg from '../assets/volunteering.png';
+import sharingImg from '../assets/sharing.png';
+import awarenessImg from '../assets/awareness.png';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix Leaflet marker icons
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+const homepageReports = [
+  {
+    id: 1,
+    position: [28.6139, 77.209],
+    description: "Injured dog near Connaught Place",
+  },
+  {
+    id: 2,
+    position: [19.076, 72.8777],
+    description: "Stray puppy seen crying under a car",
+  },
+  {
+    id: 3,
+    position: [12.9716, 77.5946],
+    description: "Wounded cat at a construction site",
+  },
+];
+
+
 
 
 export default function Home() {
@@ -94,6 +128,47 @@ transition={{duration:1.3,delay:0.8}}
     </p>
   </div>
 </motion.section>
+<section className="bg-gray-100 py-16 px-4 md:px-16">
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+    How You Can Help
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    {/* Feature 1: Reporting */}
+    <div className="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-md hover:shadow-blue-400 hover:shadow-lg hover:scale-105 hover:ring-4 hover:ring-blue-300 transform transition-all duration-300 ease-in-out">
+
+      <img src={reportingImg} alt="Report" className="w-24 h-24 mb-4" />
+      <h3 className="text-xl font-semibold mb-2">Report Stray Cases</h3>
+      <p className="text-gray-600">Spot a stray in distress? Report instantly with a photo and location to alert rescuers nearby.</p>
+    </div>
+
+    {/* Feature 2: Volunteering */}
+    <div className="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-md hover:shadow-blue-400 hover:shadow-lg hover:scale-105 hover:ring-4 hover:ring-blue-300 transform transition-all duration-300 ease-in-out">
+
+      <img src={volunteeringImg} alt="Volunteer" className="w-24 h-24 mb-4" />
+      <h3 className="text-xl font-semibold mb-2">Volunteer</h3>
+      <p className="text-gray-600">Join our community of on-ground heroes ready to respond and help animals in your area.</p>
+    </div>
+
+    {/* Feature 3: Sharing */}
+    <div className="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-md hover:shadow-blue-400 hover:shadow-lg hover:scale-105 hover:ring-4 hover:ring-blue-300 transform transition-all duration-300 ease-in-out">
+
+      <img src={sharingImg} alt="Share" className="w-24 h-24 mb-4" />
+      <h3 className="text-xl font-semibold mb-2">Share Information</h3>
+      <p className="text-gray-600">Spread awareness by sharing posts on social media. Every share can save a life.</p>
+    </div>
+
+    {/* Feature 4: Awareness */}
+    <div className="flex flex-col items-center text-center bg-white rounded-xl p-6 shadow-md hover:shadow-blue-400 hover:shadow-lg hover:scale-105 hover:ring-4 hover:ring-blue-300 transform transition-all duration-300 ease-in-out">
+
+      <img src={awarenessImg} alt="Awareness" className="w-24 h-24 mb-4" />
+      <h3 className="text-xl font-semibold mb-2">Raise Awareness</h3>
+      <p className="text-gray-600">Educate others about stray safety, vaccination drives, and how to care for street animals.</p>
+    </div>
+  </div>
+</section>
+
+
 
 {/* How It Works Section */}
 <section className="py-16 bg-gray-100 text-center">
@@ -164,6 +239,35 @@ transition={{duration:1.3,delay:0.8}}
 
   </>
 </section>
+<section className="bg-white py-16 px-4 md:px-20">
+  <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Live Reports Around You</h2>
+  <p className="text-center text-gray-600 mb-8">
+    A real-time look at stray animal cases reported by users.
+  </p>
+
+  <MapContainer
+    center={[20.5937, 78.9629]}
+    zoom={4}
+    scrollWheelZoom={false}
+    className="rounded-xl shadow-xl w-full h-[400px] md:h-[500px]"
+  >
+    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+    {homepageReports.map((report) => (
+      <Marker key={report.id} position={report.position}>
+        <Popup>{report.description}</Popup>
+      </Marker>
+    ))}
+  </MapContainer>
+
+  <div className="text-center mt-6">
+    <Link to="/map">
+      <button className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-lg shadow-md transition duration-300">
+        View Full Map
+      </button>
+    </Link>
+  </div>
+</section>
+
 
 
     </>

@@ -3,6 +3,9 @@ import logo from '../assets/logo.png';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
+import {FaMapMarkerAlt } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,9 +21,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-[100] transition-all duration-300 bg-gray-900 ${isScrolled ? "shadow-md" : ""}`}
+      style={{ background: isScrolled ? '#f3f4f6' : '#1f2937' }} /* Light gray when scrolled, dark gray when not */
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
@@ -32,38 +34,73 @@ export default function Header() {
               isScrolled ? "w-12" : "w-16"
             }`}
           />
-          <span className={`text-xl font-bold ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+          <span className={`text-xl font-bold ${isScrolled ? 'text-gray-500' : 'text-white'}`}>
             StrayBuddy
           </span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-1 transition duration-300">
-            <FaHome className="text-orange-300" />
-            <span className={`hover-shimmer ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+          <Link
+            id="home-link"
+            to="/"
+            className={`group flex items-center gap-1 transition duration-300 ${isScrolled ? "text-gray-400" : "text-white"}`}
+          >
+            <FaHome
+              className={`transition duration-300 ${isScrolled ? "text-gray-500 group-hover:text-orange-300" : "text-orange-300"}`}
+            />
+            <span className={`hover-shimmer ${isScrolled ? "text-gray-400" : "text-white"}`}>
               Home
             </span>
           </Link>
-          <Link to="/Report" className="flex items-center gap-1 transition duration-300">
-            <FaPaw className="text-orange-300" />
-            <span className={`hover-shimmer ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+          <Link
+            id="report-link"
+            to="/Report"
+            className={`group flex items-center gap-1 transition duration-300 ${isScrolled ? "text-gray-400" : "text-black"}`}
+          >
+            <FaPaw
+              className={`transition duration-300 ${isScrolled ? "text-gray-500 group-hover:text-green-500" : "text-green-500"}`}
+            />
+            <span className={`hover-shimmer ${isScrolled ? "text-gray-400" : "text-black"}`}>
               Report
             </span>
           </Link>
-          <Link to="/About" className="flex items-center gap-1 transition duration-300">
-            <FaInfoCircle className="text-orange-300" />
-            <span className={`hover-shimmer ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+          <Link
+            id="about-link"
+            to="/About"
+            className={`group flex items-center gap-1 transition duration-300 ${isScrolled ? "text-gray-400" : "text-white"}`}
+          >
+            <FaInfoCircle
+              className={`transition duration-300 ${isScrolled ? "text-gray-500 group-hover:text-purple-500" : "text-purple-500"}`}
+            />
+            <span className={`hover-shimmer ${isScrolled ? "text-gray-400" : "text-black"}`}>
               About
             </span>
           </Link>
+     <Link
+  id="map-link"
+  to="/map"
+  className={`group flex items-center gap-1 transition duration-300 ${isScrolled ? "text-gray-400" : "text-white"}`}
+>
+  <FaMapMarkerAlt
+    className={`transition duration-300 ${isScrolled ? "text-gray-500 group-hover:text-blue-500" : "text-blue-500"}`}
+  />
+  <span className={`hover-shimmer ${isScrolled ? "text-gray-400" : "text-white"}`}>
+    Live Map
+  </span>
+</Link>
+
+
+
+
+
         </nav>
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`focus:outline-none text-xl ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+            className={`focus:outline-none text-xl ${isScrolled ? 'text-gray-500' : 'text-white'}`}
           >
             ☰
           </button>
@@ -82,6 +119,10 @@ export default function Header() {
           <Link to="/about" className="block py-2 border-t" onClick={() => setMenuOpen(false)}>
             About
           </Link>
+          <Link to="/map" className="block py-2 border-t" onClick={() => setMenuOpen(false)}>
+            Live Map
+          </Link>
+       
         </div>
       )}
     </header>
