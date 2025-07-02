@@ -36,7 +36,19 @@
   text-shadow: 0 0 5px rgba(59, 130, 246, 0.7), 0 0 10px rgba(59, 130, 246, 0.5); /* Stronger blue glow */
   color: #ffffff; /* Ensure text stays white */
 }
+#login-link .hover-shimmer:hover {
+  text-shadow: 0 0 5px rgba(255, 165, 0, 0.7), 0 0 10px rgba(255, 165, 0, 0.5); /* Stronger orange glow */
+  color: #ffffff; /* Ensure text stays white */
+}
 .group:hover svg {
   filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.7)); /* Orange glow for icons */
   transition: filter 0.3s ease;
+}
+/* index.css */
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 6px;
 }

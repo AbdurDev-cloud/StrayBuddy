@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import '../index.css';
 import {FaMapMarkerAlt } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
+
 
 
 export default function Header() {
@@ -89,6 +91,16 @@ export default function Header() {
     Live Map
   </span>
 </Link>
+<Link
+  id="login-link"
+  to="/login"
+  className={`group flex items-center gap-1 transition duration-300 ${isScrolled ? "text-gray-400" : "text-white"}`}
+>
+  <FaUser className={`transition duration-300 ${isScrolled ? "text-gray-500 group-hover:text-orange-600" : "text-orange-600"}`} />
+  <span className={`hover-shimmer ${isScrolled ? "text-gray-400" : "text-black"}`}>
+    Login / Signup
+  </span>
+</Link>
 
 
 
@@ -122,9 +134,11 @@ export default function Header() {
           <Link to="/map" className="block py-2 border-t" onClick={() => setMenuOpen(false)}>
             Live Map
           </Link>
-       
+          <Link to="/login" className="block py-2 border-t" onClick={() => setMenuOpen(false)}>
+            Login / Signup
+          </Link>
         </div>
-      )}
+      )}      
     </header>
   );
 }

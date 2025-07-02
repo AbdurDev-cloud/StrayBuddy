@@ -244,12 +244,12 @@ transition={{duration:1.3,delay:0.8}}
   <p className="text-center text-gray-600 mb-8">
     A real-time look at stray animal cases reported by users.
   </p>
-
+<section className="relative z-0 mt-16">
   <MapContainer
     center={[20.5937, 78.9629]}
     zoom={4}
     scrollWheelZoom={false}
-    className="rounded-xl shadow-xl w-full h-[400px] md:h-[500px]"
+    className="rounded-xl shadow-xl w-full h-[300px] md:h-[400px] z-0"
   >
     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
     {homepageReports.map((report) => (
@@ -258,6 +258,7 @@ transition={{duration:1.3,delay:0.8}}
       </Marker>
     ))}
   </MapContainer>
+</section>
 
   <div className="text-center mt-6">
     <Link to="/map">
