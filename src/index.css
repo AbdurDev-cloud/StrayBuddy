@@ -52,3 +52,6 @@ ul::-webkit-scrollbar-thumb {
   background-color: #d1d5db;
   border-radius: 6px;
 }
+.logo-orange-glow:hover{
+  filter: drop-shadow(0 0 10px rgb(243, 111, 3));
+}

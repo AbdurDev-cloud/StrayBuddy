@@ -32,9 +32,7 @@ export default function Header() {
           <img
             src={logo}
             alt="StrayBuddy logo"
-            className={`object-contain transition-all duration-300 ${
-              isScrolled ? "w-12" : "w-16"
-            }`}
+            className={`object-contain transition-all duration-300 ${isScrolled ? "w-12" : "w-16"} logo-orange-glow`}
           />
           <span className={`text-xl font-bold ${isScrolled ? 'text-gray-500' : 'text-white'}`}>
             StrayBuddy
