@@ -1,13 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Header from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
-import Home from './pages/Home.jsx';
-import Report from './pages/Report.jsx';
-import About from './pages/About.jsx';
-import MapPage from './pages/MapPage.jsx';
-import LoginSignup from './pages/LoginSignup.jsx';
-import GuestProfile from "./pages/GuestProfile.jsx";
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Report from './pages/Report';
+import About from './pages/About';
+import MapPage from './pages/MapPage';
+import LoginSignup from './pages/LoginSignup';
+import GuestProfile from "./pages/GuestProfile";
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/login" element={<LoginSignup />} />
-          <Route path="/guest-Profile" element={<GuestProfile />} />
+          <Route path="/GuestProfile" element={<GuestProfile />} />
         </Routes>
+        <ToastContainer position="top-center" autoClose={3000} />
       </main>
       <Footer />
 

@@ -11,7 +11,7 @@ const GuestProfile = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        navigate("/Login"); // redirect if not logged in
+        navigate("/Login.jsx");
         return;
       }
 
