@@ -81,6 +81,7 @@ const LoginSignup = () => {
         name: user.displayName,
         phone: user.phoneNumber || "",
         role: "guest",
+        photoURL: user.photoURL || "", 
       });
       navigate("/GuestProfile");
     } catch (err) {
